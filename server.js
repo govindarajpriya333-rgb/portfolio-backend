@@ -1,17 +1,17 @@
 const express = require('express');
-const cors =require('cors');
+const cors = require('cors');
 const mysql = require('mysql2');
 
 const app = express();
-const port = 3000;
 
 app.use(cors());
 app.use(express.json());
 
+// Database connection (⚠️ localhost only works on your PC, not Render)
 const db = mysql.createConnection({
-  host: 'localhost',
+  host: 'localhost',   // change this to a cloud DB later
   user: 'root',
-  password: 'Priyalaxmi@2008', // your MySQL password
+  password: 'Priyalaxmi@2008',
   database: 'testdb'
 });
 
@@ -23,8 +23,9 @@ db.connect(err => {
   console.log('Connected to MySQL');
 });
 
+// Routes
 app.get('/', (req, res) => {
-  res.send('server is running!');
+  res.send('Backend is running!');
 });
 
 app.get('/users', (req, res) => {
@@ -47,7 +48,8 @@ app.post('/contact', (req, res) => {
   });
 });
 
-
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+// ✅ Only one app.listen
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
