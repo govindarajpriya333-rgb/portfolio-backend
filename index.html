@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>G Priyalaxmi</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      /* Two-color gradient background */
+      background: linear-gradient(135deg, #3498db, #8e44ad);
+      color: #fff;
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      animation: fadeDown 1.5s ease-out;
+    }
+    nav {
+      text-align: center;
+      padding: 15px;
+      background: rgba(0,0,0,0.4);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(6px);
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #f1c40f;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h2 {
+      border-bottom: 2px solid rgba(255,255,255,0.3);
+      padding-bottom: 10px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      background: rgba(255,255,255,0.2);
+      margin: 8px 0;
+      padding: 12px;
+      border-radius: 6px;
+      transition: transform 0.3s;
+    }
+    ul li:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.3);
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.5);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    input, textarea {
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      outline: none;
+    }
+    button {
+      background: #f1c40f;
+      color: #2c3e50;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform 0.3s, background 0.3s;
+    }
+    button:hover {
+      background: #e67e22;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    /* Animations */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>G PRIYALAXMI</h1>
+    <p>B.Sc Data Science | Kristu Jayanti University</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#contact-info">How can I contact me</a>
+    <a href="#contact-form">Contact to me</a>
+  </nav>
+
+  <section id="home">
+    <h2>Home</h2>
+    <p>Welcome to my website showcasing my journey in Data Science and Web Development.</p>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am G Priyalaxmi, currently pursuing B.Sc in Data Science (2nd semester) at Kristu Jayanti University. I have a strong interest in web development and programming languages. I have knowledge of technologies like HTML and CSS. I am a quick learner, self-motivated, and have good problem-solving skills. I am also interested in learning new tools and technologies related to data science and coding. My goal is to build a successful career as a data scientist and web developer.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>Node.js</li>
+      <li>GitHub</li>
+      <li>C Programming in Data Structures</li>
+      <li>Basics of R Code</li>
+      <li>Basic Statistical Analysis</li>
+      <li>C++</li>
+    </ul>
+  </section>
+
+  <section id="certificates">
+    <h2>Certificates</h2>
+    <ul>
+      <li>Digital Engineering – NASSCOM</li>
+      <li>Rising Star – Celonis</li>
+      <li>ICT Academy Certificate</li>
+      <li>Process Mining – Celonis</li>
+      <li>Node.js, GitHub, HTML, CSS, JavaScript – Infosys Springboard</li>
+      <li>MongoDB – ICT Academy</li>
+    </ul>
+  </section>
+
+  <section id="contact-info">
+    <h2>How can I contact me</h2>
+    <p>Personal Gmail: govindarajpriya333@gmail.com</p>
+    <p>College Gmail: 25dtsa23@kristujayanti.com</p>
+    <p>Instagram: govindarajpriya333</p>
+  </section>
+
+  <section id="contact-form">
+    <h2>Contact to me</h2>
+    <form onsubmit="return sendMessage()">
+      <input type="text" placeholder="Name" required>
+      <input type="email" placeholder="Gmail" required>
+      <textarea placeholder="Message" rows="5" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2026 G Priyalaxmi</p>
+  </footer>
+
+  <script>
+    // Smooth fade-in animation when sections enter viewport
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    // Corrected sendMessage function
+    function sendMessage() {
+      const name = document.querySelector('input[placeholder="Name"]').value;
+      const email = document.querySelector('input[placeholder="Gmail"]').value;
+      const message = document.querySelector('textarea').value;
+
+      fetch('http://localhost:3000/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert("Message saved! Thank you for reaching out.");
+      })
+      .catch(err => console.error("Error:", err));
+
+      return false; // prevent page reload
+    }
+  </script>
+</body>
+</html>
