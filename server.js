@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2');
+const nodemailer = require("nodemailer");
 
 const app = express();
 
@@ -9,10 +10,19 @@ app.use(express.json());
 
 // Database connection (⚠️ localhost only works on your PC, not Render)
 const db = mysql.createConnection({
-  host: 'localhost',   // change this to a cloud DB later
+  host: 'localhost', // change this to a cloud DB later
   user: 'root',
   password: 'Priyalaxmi@2008',
   database: 'testdb'
+});
+
+// Nodemailer transporter
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER, // your Gmail address
+    pass: process.env.EMAIL_PASS // your Gmail App Password
+  }
 });
 
 db.connect(err => {
@@ -38,13 +48,28 @@ app.get('/users', (req, res) => {
 app.post('/contact', (req, res) => {
   const { name, email, message } = req.body;
   const sql = 'INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)';
+  
   db.query(sql, [name, email, message], (err, result) => {
     if (err) {
       console.error(err);
-      res.status(500).json({ error: 'Failed to save message' });
-    } else {
-      res.json({ success: true, id: result.insertId });
+      return res.status(500).json({ error: 'Failed to save message' });
     }
+
+    // ✅ Send email with Nodemailer
+    const mailOptions = {
+      from: email,
+      to: process.env.EMAIL_USER,
+      subject: "New Contact Form Submission",
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error(error);
+        return res.status(500).json({ error: "Message saved but email failed" });
+      }
+      res.json({ success: true, id: result.insertId, emailId: info.messageId });
+    });
   });
 });
 

@@ -9,7 +9,6 @@
       margin: 0;
       padding: 0;
       scroll-behavior: smooth;
-      /* Two-color gradient background */
       background: linear-gradient(135deg, #3498db, #8e44ad);
       color: #fff;
     }
@@ -101,8 +100,6 @@
       color: #fff;
       transform: scale(1.05);
     }
-
-    /* Animations */
     @keyframes fadeDown {
       from { opacity: 0; transform: translateY(-50px); }
       to { opacity: 1; transform: translateY(0); }
@@ -168,10 +165,10 @@
 
   <section id="contact-form">
     <h2>Contact to me</h2>
-    <form onsubmit="return sendMessage()">
-      <input type="text" placeholder="Name" required>
-      <input type="email" placeholder="Gmail" required>
-      <textarea placeholder="Message" rows="5" required></textarea>
+    <form id="contactForm">
+      <input type="text" name="name" placeholder="Name" required>
+      <input type="email" name="email" placeholder="Gmail" required>
+      <textarea name="message" placeholder="Message" rows="5" required></textarea>
       <button type="submit">Send</button>
     </form>
   </section>
@@ -195,25 +192,33 @@
       observer.observe(section);
     });
 
-    // Corrected sendMessage function
-    function sendMessage() {
-      const name = document.querySelector('input[placeholder="Name"]').value;
-      const email = document.querySelector('input[placeholder="Gmail"]').value;
-      const message = document.querySelector('textarea').value;
+    // Contact form submission
+    document.getElementById("contactForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = {
+        name: e.target.name.value,
+        email: e.target.email.value,
+        message: e.target.message.value
+      };
 
-      fetch('http://localhost:3000/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message })
-      })
-      .then(res => res.json())
-      .then(data => {
-        alert("Message saved! Thank you for reaching out.");
-      })
-      .catch(err => console.error("Error:", err));
+      try {
+        const response = await fetch("https://portfolio-backend.onrender.com/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        });
 
-      return false; // prevent page reload
-    }
+        const result = await response.json();
+        if (result.success) {
+          alert("Message sent successfully!");
+        } else {
+          alert("Failed to send message.");
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Error sending message.");
+      }
+    });
   </script>
 </body>
 </html>
