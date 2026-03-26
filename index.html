@@ -1,224 +1,229 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>G Priyalaxmi</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-      background: linear-gradient(135deg, #3498db, #8e44ad);
-      color: #fff;
-    }
-    header {
-      text-align: center;
-      padding: 60px 20px;
-      animation: fadeDown 1.5s ease-out;
-    }
-    nav {
-      text-align: center;
-      padding: 15px;
-      background: rgba(0,0,0,0.4);
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(6px);
-    }
-    nav a {
-      color: #fff;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #f1c40f;
-    }
-    section {
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: auto;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease-out;
-      background: rgba(255,255,255,0.1);
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    h2 {
-      border-bottom: 2px solid rgba(255,255,255,0.3);
-      padding-bottom: 10px;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    ul li {
-      background: rgba(255,255,255,0.2);
-      margin: 8px 0;
-      padding: 12px;
-      border-radius: 6px;
-      transition: transform 0.3s;
-    }
-    ul li:hover {
-      transform: scale(1.05);
-      background: rgba(255,255,255,0.3);
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.5);
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    input, textarea {
-      padding: 12px;
-      border: none;
-      border-radius: 6px;
-      outline: none;
-    }
-    button {
-      background: #f1c40f;
-      color: #2c3e50;
-      border: none;
-      padding: 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: transform 0.3s, background 0.3s;
-    }
-    button:hover {
-      background: #e67e22;
-      color: #fff;
-      transform: scale(1.05);
-    }
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>G PRIYALAXMI</h1>
-    <p>B.Sc Data Science | Kristu Jayanti University</p>
-  </header>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G Priyalaxmi</title><style>
+:root {
+  --bg: #0a0f1f;
+  --glass: rgba(255,255,255,0.08);
+  --neon1: #00f5ff;
+  --neon2: #ff00ff;
+  --text: #e2e8f0;
+}
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#certificates">Certificates</a>
-    <a href="#contact-info">How can I contact me</a>
-    <a href="#contact-form">Contact to me</a>
-  </nav>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #0a0f1f, #020617);
+  color: var(--text);
+}
 
-  <section id="home">
-    <h2>Home</h2>
-    <p>Welcome to my website showcasing my journey in Data Science and Web Development.</p>
-  </section>
+header {
+  text-align: center;
+  padding: 80px 20px;
+}
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I am G Priyalaxmi, currently pursuing B.Sc in Data Science (2nd semester) at Kristu Jayanti University. I have a strong interest in web development and programming languages. I have knowledge of technologies like HTML and CSS. I am a quick learner, self-motivated, and have good problem-solving skills. I am also interested in learning new tools and technologies related to data science and coding. My goal is to build a successful career as a data scientist and web developer.</p>
-  </section>
+header h1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, var(--neon1), var(--neon2));
+  -webkit-background-clip: text;
+  color: transparent;
+}
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>HTML, CSS, JavaScript</li>
-      <li>Node.js</li>
-      <li>GitHub</li>
-      <li>C Programming in Data Structures</li>
-      <li>Basics of R Code</li>
-      <li>Basic Statistical Analysis</li>
-      <li>C++</li>
-    </ul>
-  </section>
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.4);
+}
 
-  <section id="certificates">
-    <h2>Certificates</h2>
-    <ul>
-      <li>Digital Engineering – NASSCOM</li>
-      <li>Rising Star – Celonis</li>
-      <li>ICT Academy Certificate</li>
-      <li>Process Mining – Celonis</li>
-      <li>Node.js, GitHub, HTML, CSS, JavaScript – Infosys Springboard</li>
-      <li>MongoDB – ICT Academy</li>
-    </ul>
-  </section>
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
 
-  <section id="contact-info">
-    <h2>How can I contact me</h2>
-    <p>Personal Gmail: govindarajpriya333@gmail.com</p>
-    <p>College Gmail: 25dtsa23@kristujayanti.com</p>
-    <p>Instagram: govindarajpriya333</p>
-  </section>
+nav a:hover {
+  background: linear-gradient(90deg, var(--neon1), var(--neon2));
+  color: black;
+}
 
-  <section id="contact-form">
-    <h2>Contact to me</h2>
-    <form id="contactForm">
-      <input type="text" name="name" placeholder="Name" required>
-      <input type="email" name="email" placeholder="Gmail" required>
-      <textarea name="message" placeholder="Message" rows="5" required></textarea>
-      <button type="submit">Send</button>
-    </form>
-  </section>
+section {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 25px;
+  border-radius: 15px;
+  background: var(--glass);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 20px rgba(0,255,255,0.15);
+  transform: translateY(40px);
+  opacity: 0;
+  transition: 0.6s;
+}
 
-  <footer>
-    <p>© 2026 G Priyalaxmi</p>
-  </footer>
+section.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
 
-  <script>
-    // Smooth fade-in animation when sections enter viewport
-    const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    }, { threshold: 0.2 });
+h2 {
+  color: var(--neon1);
+  border-bottom: 2px solid var(--neon2);
+  padding-bottom: 6px;
+}
 
-    sections.forEach(section => {
-      observer.observe(section);
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+ul li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--neon1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input, textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--neon1), var(--neon2));
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--neon2);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #020617;
+}
+
+@media(max-width:600px){
+  header h1{font-size:2rem;}
+  section{margin:15px;}
+}
+
+</style></head><body><header>
+  <h1>G PRIYALAXMI</h1>
+  <p>B.Sc Data Science | Kristu Jayanti University</p>
+</header><nav>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#certificates">Certificates</a>
+  <a href="#contact-info">Contact Info</a>
+  <a href="#contact-form">Contact Form</a>
+</nav><section id="home">
+  <h2>Home</h2>
+  <p>Welcome to my futuristic portfolio 🚀</p>
+</section><section id="about">
+  <h2>About Me</h2>
+  <p>
+    I am G Priyalaxmi, currently pursuing a B.Sc in Data Science (2nd semester) at Kristu Jayanti University. I have a strong passion for web development and programming, with foundational knowledge in HTML and CSS.I am a quick learner, self-motivated, and possess strong problem-solving skills. I am always eager to explore new tools and technologies in the fields of data science and software development.
+
+My goal is to build a successful career as a Data Scientist and Web Developer, where I can apply my skills to create innovative and impactful solutions.
+
+  </p>
+</section><section id="skills">
+  <h2>Skills</h2>
+  <ul>
+    <li>HTML, CSS, JavaScript</li>
+    <li>Node.js</li>
+    <li>GitHub</li>
+    <li>C Programming in Data Structures</li>
+    <li>Basics of R Code</li>
+    <li>Basic Statistical Analysis</li>
+    <li>C++</li>
+  </ul>
+</section><section id="certificates">
+  <h2>Certificates</h2>
+  <ul>
+    <li>Digital Engineering – NASSCOM</li>
+    <li>Rising Star – Celonis</li>
+    <li>ICT Academy Certificate</li>
+    <li>Process Mining – Celonis</li>
+    <li>Node.js, GitHub, HTML, CSS, JavaScript – Infosys Springboard</li>
+    <li>MongoDB – ICT Academy</li>
+  </ul>
+</section><section id="contact-info">
+  <h2>How can You contact me</h2>
+  <p>Personal Gmail: govindarajpriya333@gmail.com</p>
+  <p>College Gmail: 25dtsa23@kristujayanti.com</p>
+  <p>Instagram: govindarajpriya333</p>
+</section><section id="contact-form">
+  <h2>Contact Me</h2>
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="5" placeholder="Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section><footer>
+  <p>© 2026 G Priyalaxmi</p>
+</footer><!-- EmailJS Script --><script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script><script>
+// Animation
+const sections = document.querySelectorAll("section");
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+});
+sections.forEach(section => observer.observe(section));
+
+// EmailJS Setup
+(function(){
+  emailjs.init("YOUR_PUBLIC_KEY"); // replace this
+})();
+
+// Form Submission
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
+    .then(function() {
+      alert("Message sent successfully! ✅");
+    }, function(error) {
+      alert("Failed to send message ❌");
+      console.log(error);
     });
-
-    // Contact form submission
-    document.getElementById("contactForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const formData = {
-        name: e.target.name.value,
-        email: e.target.email.value,
-        message: e.target.message.value
-      };
-
-      try {
-        const response = await fetch("https://portfolio-backend.onrender.com/contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData)
-        });
-
-        const result = await response.json();
-        if (result.success) {
-          alert("Message sent successfully!");
-        } else {
-          alert("Failed to send message.");
-        }
-      } catch (error) {
-        console.error(error);
-        alert("Error sending message.");
-      }
-    });
-  </script>
-</body>
+});
+</script></body>
 </html>
