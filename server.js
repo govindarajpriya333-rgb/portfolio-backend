@@ -13,7 +13,7 @@ const db = mysql.createConnection({
   host: 'localhost', // change this to a cloud DB later
   user: 'root',
   password: 'Priyalaxmi@2008',
-  database: 'testdb'
+  database: 'portfolio_db'
 });
 
 // Nodemailer transporter

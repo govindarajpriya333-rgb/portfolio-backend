@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>G Priyalaxmi</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --bg: #0a0f1f;
@@ -29,18 +32,14 @@ header h1 {
   font-size: 3rem;
   background: linear-gradient(90deg, var(--neon1), var(--neon2));
   -webkit-background-clip: text;
-  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 nav {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
   padding: 15px;
-  position: sticky;
-  top: 0;
-  backdrop-filter: blur(12px);
   background: rgba(0,0,0,0.4);
 }
 
@@ -48,14 +47,6 @@ nav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  padding: 8px 12px;
-  border-radius: 8px;
-  transition: 0.3s;
-}
-
-nav a:hover {
-  background: linear-gradient(90deg, var(--neon1), var(--neon2));
-  color: black;
 }
 
 section {
@@ -65,21 +56,10 @@ section {
   border-radius: 15px;
   background: var(--glass);
   backdrop-filter: blur(15px);
-  box-shadow: 0 0 20px rgba(0,255,255,0.15);
-  transform: translateY(40px);
-  opacity: 0;
-  transition: 0.6s;
-}
-
-section.visible {
-  transform: translateY(0);
-  opacity: 1;
 }
 
 h2 {
   color: var(--neon1);
-  border-bottom: 2px solid var(--neon2);
-  padding-bottom: 6px;
 }
 
 ul {
@@ -88,16 +68,10 @@ ul {
 }
 
 ul li {
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 10px;
+  padding: 10px;
+  margin: 8px 0;
   background: rgba(255,255,255,0.1);
-  transition: 0.3s;
-}
-
-ul li:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px var(--neon1);
+  border-radius: 8px;
 }
 
 form {
@@ -116,44 +90,40 @@ input, textarea {
 
 button {
   padding: 12px;
-  border: none;
   border-radius: 8px;
+  border: none;
   background: linear-gradient(90deg, var(--neon1), var(--neon2));
-  color: black;
-  font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
+  font-weight: bold;
 }
 
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px var(--neon2);
+#status {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 footer {
   text-align: center;
   padding: 20px;
-  background: #020617;
-}
-
-@media(max-width:600px){
-  header h1{font-size:2rem;}
-  section{margin:15px;}
 }
 </style>
 </head>
+
 <body>
+
 <header>
   <h1>G PRIYALAXMI</h1>
   <p>B.Sc Data Science | Kristu Jayanti University</p>
 </header>
+
 <nav>
   <a href="#home">Home</a>
   <a href="#about">About</a>
   <a href="#skills">Skills</a>
   <a href="#certificates">Certificates</a>
   <a href="#contact-info">Contact Info</a>
-  <a href="#contact-form">Contact Form</a>
+  <a href="#contact-form">Contact</a>
 </nav>
 
 <section id="home">
@@ -163,15 +133,9 @@ footer {
 
 <section id="about">
   <h2>About Me</h2>
-  <p>
-    I am G Priyalaxmi, currently pursuing a B.Sc in Data Science (2nd semester) at Kristu Jayanti University. I have a strong passion for web development and programming, with foundational knowledge in HTML and CSS.
-  </p>
-  <p>
-    I am a quick learner, self-motivated, and possess strong problem-solving skills. I am always eager to explore new tools and technologies in the fields of data science and software development.
-  </p>
-  <p>
-    My goal is to build a successful career as a Data Scientist and Web Developer, where I can apply my skills to create innovative and impactful solutions.
-  </p>
+  <p>I am G Priyalaxmi, currently pursuing a B.Sc in Data Science (2nd semester) at Kristu Jayanti University.</p>
+  <p>I have a strong passion for web development and programming.</p>
+  <p>I am a quick learner and have good problem-solving skills.</p>
 </section>
 
 <section id="skills">
@@ -200,20 +164,23 @@ footer {
 </section>
 
 <section id="contact-info">
-  <h2>How can I contact me</h2>
-  <p>Personal Gmail: govindarajpriya333@gmail.com</p>
-  <p>College Gmail: 25dtsa23@kristujayanti.com</p>
+  <h2>How can you contact me</h2>
+  <p>Email: govindarajpriya333@gmail.com</p>
+  <p>College Email: 25dtsa23@kristujayanti.com</p>
   <p>Instagram: govindarajpriya333</p>
 </section>
 
 <section id="contact-form">
   <h2>Contact Me</h2>
+
   <form id="contactForm">
     <input type="text" name="name" placeholder="Your Name" required>
     <input type="email" name="email" placeholder="Your Email" required>
     <textarea name="message" rows="5" placeholder="Message" required></textarea>
     <button type="submit">Send Message</button>
   </form>
+
+  <p id="status"></p>
 </section>
 
 <footer>
@@ -221,16 +188,41 @@ footer {
 </footer>
 
 <script>
-// Animation
-const sections = document.querySelectorAll("section");
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
+const form = document.getElementById("contactForm");
+const status = document.getElementById("status");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  status.innerText = "Sending...";
+
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    message: form.message.value
+  };
+
+  try {
+    const response = await fetch("http://localhost:3000", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      status.innerText = "✅ Message sent successfully!";
+      form.reset();
+    } else {
+      status.innerText = "❌ Failed to send message";
     }
-  });
+
+  } catch (error) {
+    status.innerText = "❌ Server not reachable";
+  }
 });
-sections.forEach(section => observer.observe(section));
 </script>
+
 </body>
 </html>
